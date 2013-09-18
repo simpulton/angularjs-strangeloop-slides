@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Introduction to AngularJS</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="css/reveal.fullscreen.css">
+  <link rel="stylesheet" href="css/overrides.css">
+
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+  document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+  </script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body id="body">
+		<div class="reveal">
+
+			<div class="slides">
+        <section>
+          <img src="images/logo.png" alt="AngularJS">
+          <h1 class="red">AngularJS Basics</h1>
+        </section>
+
+        <section>
+          <section>
+            <h1 class="orange">Who are we?</h1>
+          </section>
+          <section>
+            <img src="images/lukas.png" alt="Lukas">
+            <h2>Lukas Ruebbelke</h2>
+            <p>Blog at http://onehungrymind.com/</p>
+            <p>Contributed to AngularJS</p>
+            <p>Co-Author of AngularJS in Action</p>             
+          </section>
+          <section>
+            <img src="images/matias.jpg" alt="Matias">
+            <h2>Matias Niemelä</h2>
+            <p>Blog at http://yearofmoo.com/</p>
+            <p>AngularJS Contributor</p>
+            <p>Wrote AngularJS Animations Ya'all!</p>             
+          </section>
+          <section>
+            <img src="images/joel.jpg" alt="Joel">
+            <h2>Joel Hooks</h2>
+            <p>Blog at http://joelhooks.com/</p>
+            <p>Egghead.io Partner</p>
+          </section>
+        </section>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE BASIC ONE      
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <section>
+          <section>
+            <h2 class="em">M1: Hello AngularJS</h2>
+            <p class="fragment fade-in">The History of AngularJS</p>
+            <p class="fragment fade-in">The AngularJS Elevator Pitch</p>
+            <p class="fragment fade-in">Hello AngularJS with Yeoman</p>          
+            <p class="fragment fade-in">Hello AngularJS by Hand</p>            
+          </section>
+
+          <section>
+            <h2 class="em">History of AngularJS</h2>
+            <p class="fragment fade-in">Developed in 2009 by Misko Hevery.</p>
+            <p class="fragment fade-in">Publicly released as version 0.9.0 in October 2010</p>
+            <p class="fragment fade-in">Currently at version 1.0.7 stable or 1.2.0rc2 unstable</p>            
+          </section>   
+
+          <section>
+            <h2 class="em">The AngularJS Elevator Pitch</h2>
+            <p class="fragment fade-in">An intuitive framework that makes it easy to organize your code.</p>
+            <p class="fragment fade-in">Testable code makes it easier to sleep at night.</p>
+            <p class="fragment fade-in">Two-way data binding saves you hundreds of lines of code.</p>
+            <p class="fragment fade-in">Templates that are HTML means you already know how to write them.</p>
+            <p class="fragment fade-in">Data structures that are just JavaScript make integration really easy. </p>
+            <p class="fragment fade-in">99 Problems but scope ain’t one of them!</p>          
+          </section>   
+
+          <section>
+            <h1 class="em">Yeoman</h1>
+          </section>
+
+          <section>
+            <h2 class="em">Hello AngularJS with Yeoman</h2>
+            <p class="fragment fade-in">npm install -g yo</p>
+            <p class="fragment fade-in">npm install -g generator-angular</p>
+            <p class="fragment fade-in">mkdir projectname && cd $_</p>
+            <p class="fragment fade-in">yo angular projectname</p>
+            <p class="fragment fade-in">grunt server</p>
+            <p class="fragment fade-in">grunt test</p>
+            <p class="fragment fade-in">grunt</p>
+          </section>
+          
+          <section>
+            <h2>Hello AngularJS From Scratch</h2>          
+            <pre class="big-code fragment fade-in"><code data-trim>
+// script.js
+angular.module('MyApp', [])
+.controller('MainCtrl', function($scope) {
+  $scope.world = 'Strange Loop!;
+});
+// index.html
+&lt;html ng-app="MyApp"&gt;
+
+&lt;body ng-controller="MainCtrl"&gt;
+  &lt;h1&gt;Hello {{world}}&lt;/h1&gt;
+&lt;/body>  
+            </code></pre>
+          </section>
+          <section>
+            <h1 class="em">The 80/20 Rule</h1>
+          </section>
+        </section>
+        
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE BASIC TWO      
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->        
+        <section>
+          <section>
+            <h2 class="em">M2: Build a Strong AngularJS Foundation</h2>            
+            <p class="fragment fade-in">The Big AngularJS Picture<p>
+            <p class="fragment fade-in">$compile<p>
+            <p class="fragment fade-in">$digest and $apply<p>
+            <p class="fragment fade-in">Model View Whatever<p>
+            <p class="fragment fade-in">Controller and $scope<p>
+            <p class="fragment fade-in">View and Templates<p>
+            <p class="fragment fade-in">Models and Services<p>
+            <p class="fragment fade-in">Routes<p>
+          </section>
+          <section>
+            <h2 class="em">The Big AngularJS Picture</h2>            
+          </section>  
+          <section>
+            <img src="images/bigpicture.png" alt="Big Picture">
+          </section>
+          <section>
+            <h2 class="em">$compile</h2>            
+            <p class="fragment fade-in">$compile compiles DOM into a template function that can then be used to link scope and the View together<p>
+          </section>    
+          <section>
+            <img src="images/compile.png" alt="Compile">
+          </section>                
+          <section>
+            <h2 class="em">$digest and $apply</h2>            
+            <p class="fragment fade-in">$digest processes all of the watchers of the current scope</p>
+            <p class="fragment fade-in">$apply() is used to notify that something has happened outside of the AngularJS domain</p>
+            <p class="fragment fade-in">$apply forces a $digest cycle<p class="fragment fade-in"></p>
+          </section> 
+          <section>
+            <img src="images/digest.png" alt="Compile">
+          </section> 
+          <section>
+            <img src="images/hammer.gif" alt="Demo Time!">
+            <h1 class="em">Stop! Demo Time!</h1>
+          </section>                  
+          <section>
+            <h2 class="em">Model View Whatever</h2>            
+            <p class="fragment fade-in">Choose “whatever” pattern helps you be more productive<p class="fragment fade-in"></p>
+          </section> 
+          <section>
+            <img src="images/mvvm.png" alt="MVVM">
+          </section>          
+          <section>
+            <h2 class="em">Controller and $scope</h2>            
+            <p class="fragment fade-in">$scope is the glue between the Controller and the View</p>
+            <p class="fragment fade-in">The Controller is responsible for constructing the model on $scope and providing commands for the View to act upon</p>
+            <p class="fragment fade-in">$scope provides context<p class="fragment fade-in"></p>
+          </section> 
+         <section>
+            <img src="images/scope.png" alt="Scope">
+          </section>             
+          <section>
+            <h2 class="em">View and Templates</h2>            
+            <p class="fragment fade-in">The View is AngularJS compiled DOM</p>
+            <p class="fragment fade-in">The View is the product of $compile merging the HTML template with $scope</p>
+            <p class="fragment fade-in">DOM is no longer the single source of truth.<p class="fragment fade-in"></p>
+          </section> 
+          <section>
+            <h2 class="em">Models and Services</h2>            
+            <p class="fragment fade-in">Services carry out common tasks specific to the web application</p>
+            <p class="fragment fade-in">Services are consumed via Dependency Injection </p>
+            <p class="fragment fade-in">Services are application singletons</p>
+            <p class="fragment fade-in">Services are instantiated lazily<p class="fragment fade-in"></p>
+          </section> 
+          <section>
+            <img src="images/services.png" alt="MVVM">
+          </section>            
+          <section>
+            <h2 class="em">Routes</h2>            
+            <p class="fragment fade-in">$route is used for deep linking URLs to Controllers and Views</p>
+            <p class="fragment fade-in">Include the ngRoute module into your code</p>
+            <p class="fragment fade-in">Define routes using $routeProvider</p>
+            <p class="fragment fade-in">Typically used in conjunction with ngView directive and $routeParams service<p class="fragment fade-in"></p>
+          </section>
+          <section>
+            <img src="images/hammer.gif" alt="Demo Time!">
+            <h1 class="em">Stop! Demo Time!</h1>
+          </section>                                 
+        </section>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE BASIC THREE   
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <section>
+          <section>
+            <h2 class="em">M3: Directive Basics</h2>
+            <p class="fragment fade-in">Directives as a DSL</p>
+            <p class="fragment fade-in">The Simplified World View</p>
+            <p class="fragment fade-in">Directive Definition Object</p>
+            <p class="fragment fade-in">The Controller Function</p>
+            <p class="fragment fade-in">The Link Function</p>  
+          </section>
+          <section>
+            <h2 class="em">Directives as a DSL</h2>
+          </section>
+          <section>
+            <h2 class="em">Why a DSL?</h2>
+              <p class="fragment fade-in">'People find DSLs valuable because a well-designed DSL can be much easier to program with than a traditional library. This improves programmer productivity, which is always valuable. In particular it may also improve communication with domain experts, which is an important tool for tackling one of the hardest problems in software development.' Martin Fowler</p>            
+          </section>
+          <section>
+            <h2 class="em">Fixed Languages are Broken</h2>
+            <p class="fragment fade-in">'[Without the ability to reprogram the language] programmers resort to repetitive, error-prone workarounds. Literally millions of lines of code have been written to work around missing features in programming languages.' Stuart Halloway</p>
+          </section>                    
+          <section>
+            <h2 class="em">The Simplified World View</h2>
+            <p class="fragment fade-in">Most simple directives consist of three things (or less)</p>
+            <p class="fragment fade-in">Having a firm grasp on these three things will make advanced directives much more approachable</p>
+          </section>
+          <section>
+            <img src="images/anatomy_directive_00.png" alt="Compile">
+          </section>           
+          <section>
+            <h2 class="em">Directive Definition Object</h2>
+            <p class="fragment fade-in">The Directive Definition Object (DDO) tells the compiler how a directive is supposed to be assembled</p>
+            <p class="fragment fade-in">Common properties are the link function, controller function, restrict, template and templateUrl</p>            
+          </section>
+          <section>
+            <img src="images/anatomy_directive_01.png" alt="Compile">
+          </section>           
+          <section>
+            <h2 class="em">The Controller Function</h2>
+            <p class="fragment fade-in">The controller is constructed during the pre-linking phase</p>
+            <p class="fragment fade-in">Receives $scope which is the current scope for the element</p>            
+          </section> 
+          <section>
+            <img src="images/anatomy_directive_02.png" alt="Compile">
+          </section>           
+          <section>
+            <h2 class="em">The Link Function</h2>
+            <p class="fragment fade-in">The link function is where DOM manipulation happens</p>
+            <p class="fragment fade-in">The link function comes with scope, element and attrs</p>
+            <p class="fragment fade-in">scope is the the same $scope in the controller function</p>
+            <p class="fragment fade-in">element is a jQuery* instance of the DOM element the directive is declared on</p>
+            <p class="fragment fade-in">attrs is a list of attributes declared on the element </p>              
+          </section>
+          <section>
+            <img src="images/anatomy_directive_03.png" alt="Compile">
+          </section>           
+        </section>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE BASIC FOUR      
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <section>
+          <section>
+            <h2 class="em">M4: Server Side Integration with AngularJS</h2>
+            <p class="fragment fade-in">REST and $http</p>
+            <p class="fragment fade-in">Promises</p>
+            <p class="fragment fade-in">BONUS: Real Time Communication</p>
+          </section> 
+          <section>
+            <h2 class="em">$HTTP</h2>
+            <p class="fragment fade-in">The $http service is a core Angular service that facilitates communication with the remote HTTP servers via the browser's XMLHttpRequest object or via JSONP.</p>
+            <p class="fragment fade-in">The $http API is based on the deferred/promise APIs exposed by the $q service</p>
+          </section> 
+          <section>
+            <h2 class="em">$HTTP Shortcut Methods</h2>
+            <p class="fragment fade-in">$http.get</p>
+            <p class="fragment fade-in">$http.head</p>
+            <p class="fragment fade-in">$http.post</p>
+            <p class="fragment fade-in">$http.put</p>
+            <p class="fragment fade-in">$http.delete</p>
+            <p class="fragment fade-in">$http.jsonp</p>
+          </section> 
+          <section>
+            <h2 class="em">Promises</h2>
+            <p class="fragment fade-in">The returned value of calling $http is a promise</p>
+            <p class="fragment fade-in">You can use the then method to register callbacks</p>
+            <p class="fragment fade-in">These callbacks receive a single argument - an object representing the response</p>
+          </section>      
+          <section>
+            <h2 class="em">Real Time Communication</h2>
+            <p class="fragment fade-in">Firebase</p>
+          </section>                                                
+        </section>
+
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE BASIC FIVE      
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <section>
+          <section>
+            <h2 class="em">M5: Testing with AngularJS</h2>
+            <p class="fragment fade-in">The Environment</p>
+            <p class="fragment fade-in">Unit Testing</p>
+            <p class="fragment fade-in">E2E Testing</p>            
+          </section>
+          <section>
+            <h2 class="em">The Environment</h2>
+            <p class="fragment fade-in">Karma is the current scenario runner</p>
+            <p class="fragment fade-in">Protractor is the next-gen scenario runner</p>
+            <p class="fragment fade-in">Karma is testing framework agnostic</p>
+            <p class="fragment fade-in">The easiest way to get up and running with Karma is with Yeoman</p>            
+          </section>          
+          <section>
+            <h2 class="em">Unit Testing</h2>
+            <p class="fragment fade-in">Test isolated pieces or units of logic</p>
+            <p class="fragment fade-in">We accomplish this with matchers and spies</p>
+          </section>          
+          <section>
+            <h2 class="em">Matchers</h2>
+            <p class="fragment fade-in">Expectations are built with the function expect which takes a value, called the actual. It is chained with a Matcher function, which takes the expected value.</p>
+            <pre class="big-code fragment fade-in"><code data-trim>
+expect(a).toBe(b);
+expect(a).not.toBe(null);
+            </code></pre>
+          </section>          
+          <section>
+            <h2 class="em">Spies</h2>
+            <p class="fragment fade-in">Jasmine’s test doubles are called spies. A spy can stub any function and tracks calls to it and all arguments. There are special matchers for interacting with spies.</p>
+            <pre class="big-code fragment fade-in"><code data-trim>
+spyOn(mockUserService, 'userExists').andCallThrough();
+scope.userExists();
+expect(mockUserService.userExists).toHaveBeenCalled(); 
+            </code></pre>
+          </section>          
+          <section>
+            <h2 class="em">E2E Testing</h2>
+            <p class="fragment fade-in">Used for simulating user interactions</p>
+            <p class="fragment fade-in">You will write scenarios to describe behavior based on interactions</p>
+            <p class="fragment fade-in">Scenarios consist of commands and expectations</p>
+            <p class="fragment fade-in">beforeEach runs before each it block</p>
+            <p class="fragment fade-in">afterEach runs after each it block</p>
+          </section>          
+        </section>                        
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE ADVANCED ONE      
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <section>
+          <img src="images/logo.png" alt="AngularJS">
+          <h1 class="red">Advanced AngularJS</h1>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="em">M1: Intro and Low Level AngularJS</h2>
+            <p class="fragment fade-in">$compile</p>
+            <p class="fragment fade-in">$digest and $apply</p>
+            <p class="fragment fade-in">$rootScope</p>            
+          </section>
+        </section>  
+
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE ADVANCED TWO      
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <section>
+          <section>
+            <h2 class="em">M2: Large AngularJS Applications</h2>
+            <p class="fragment fade-in">Structure</p>
+            <p class="fragment fade-in">Build Tools</p>
+            <p class="fragment fade-in">Optimizing</p>            
+          </section>
+        </section>  
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE ADVANCED THREE      
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <section>
+          <section>
+            <h2 class="em">M3: Advanced Testing with AngularJS</h2>
+            <p class="fragment fade-in">More Unit Tests</p>
+            <p class="fragment fade-in">More E2E Tests</p>            
+          </section>
+        </section>  
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE ADVANCED FOUR      
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <section>
+          <section>
+            <h2 class="em">M4: Advanced Directives</h2>
+            <p class="fragment fade-in">Isolated Scope</p>
+            <p class="fragment fade-in">Transclusion</p>
+            <p class="fragment fade-in">3rd Party Integration</p>
+          </section>
+          <section>
+            <h2 class="em">Isolated Scope</h2>
+            <p class="fragment fade-in">Isolated scope does not prototypically inherit from its parent</p>
+            <p class="fragment fade-in">This prevents your directive from accidentally modifying data in the parent scope</p>
+            <p class="fragment fade-in">This in a sense defines the API for the directive</p>
+          </section>             
+          <section>
+            <h2 class="em">Attribute Isolate Scope</h2>
+            <p class="fragment fade-in">Defined with an @ symbol</p>
+            <p class="fragment fade-in">Binds a local scope property to the value of a DOM attribute</p>
+            <p class="fragment fade-in">The binding is uni-directional from parent to directive</p>
+            <p class="fragment fade-in">The result is always a string because DOM attributes are strings</p>
+          </section>
+          <section>
+            <img src="images/isolated_attribute.png" alt="Attribute Isolate">
+          </section>          
+          <section>
+            <h2 class="em">Binding Isolated Scope</h2>
+            <p class="fragment fade-in">Defined with an = symbol</p>
+            <p class="fragment fade-in">Bi-directional binding between parent and directive</p>
+            <p class="fragment fade-in">You can define the binding as optional via =?</p>
+            <p class="fragment fade-in">Optimal for dealing with objects and collections </p>
+          </section>
+          <section>
+            <img src="images/isolated_binding.png" alt="Binding Isolate">
+          </section>          
+          <section>
+            <h2 class="em">Expression Isolated Scope</h2>
+            <p class="fragment fade-in">Defined using an & symbol</p>
+            <p class="fragment fade-in">Allows you to execute an expression on the parent scope</p>
+            <p class="fragment fade-in">To pass variables from child to parent expressions you must use an object map</p>            
+          </section> 
+          <section>
+            <img src="images/isolated_expression.png" alt="Attribute Isolate">
+          </section>             
+          <section>
+            <h2 class="em">Compile</h2>
+            <p class="fragment fade-in">Compiles the contents of the element and makes it available to the directive</p>
+          </section>                             
+          <section>
+            <h2 class="em">Transclusion</h2>
+            <p class="fragment fade-in">The transcluded contents are bound to the parent scope</p>
+            <p class="fragment fade-in">The directive contents are bound to an isolate scope</p>
+            <p class="fragment fade-in">The two scopes are siblings</p>
+            <p class="fragment fade-in">This is good for decorating an existing element with a directive without destroying it</p>
+          </section>
+          <section>
+            <img src="images/transclusion.png" alt="Transclusion">
+          </section>           
+          <section>
+            <h2 class="em">3rd Party Integration</h2>
+            <p class="fragment fade-in">Demo time!</p>
+          </section>                                       
+        </section>        
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MODULE ADVANCED FIVE      
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <section>
+          <section>
+            <h2 class="em">M5: AngularJS Animations</h2>
+            <p class="fragment fade-in">The Animation Naming Convention</p>
+            <p class="fragment fade-in">CSS Animations</p>
+            <p class="fragment fade-in">CSS Transitions</p>
+            <p class="fragment fade-in">JavaScript Animations</p>
+          </section>   
+          <section>
+            <h2 class="em">The Animation Naming Convention</h2>
+            <p class="fragment fade-in">The pattern is [class][event][destination] and stack on each other</p>
+            <pre class="big-code fragment fade-in"><code data-trim>
+.repeat-item.ng-enter.ng-enter-active
+.my-elm.ng-hide-add.ng-hide-add-active
+.my-animation.CLASS-add.CLASS-add-active
+            </code></pre>            
+          </section>
+          <section>
+            <h2 class="em">CSS Animations</h2>
+            <p class="fragment fade-in">The easiest and fastest way to attach animations</p>
+            <p class="fragment fade-in">Support by every browser except for IE9 and below</p>
+            <p class="fragment fade-in">As long as the matching CSS class is present then AngularJS will pick up the animation</p>
+          </section>          
+          <section>
+            <h2 class="em">CSS Transitions</h2>
+            <p class="fragment fade-in">More extensive than transitions</p>
+            <p class="fragment fade-in">Supported by every browser except IE9 and below</p>
+            <p class="fragment fade-in">Does not require the destination class styling aka -active class</p>
+          </section>
+          <section>
+            <h2 class="em">JavaScript Animations</h2>
+            <p class="fragment fade-in">Allows for more control over your animations</p>
+            <p class="fragment fade-in">Define your animations with the animation service</p>
+            <p class="fragment fade-in">Naming convention is still class based</p>
+            <p class="fragment fade-in">Make sure to call the done() function when the animation is over</p>
+          </section>          
+        </section>        
+    </div>
+
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.min.js"></script>
+
+  <script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+        width: 1280,
+        height: 700,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+        { src: 'js/reveal.fullscreen.js' },
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          ]
+        });
+</script>
+
+</body>
+</html>
