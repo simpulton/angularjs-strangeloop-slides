@@ -49,7 +49,12 @@ BASIC INTRO
 
 <section class="orange">
     <section>
-        <h1>Who are we?</h1>
+      <h1>Slides</h1>
+      <p class="fragment fade-in">http://yom.nu/ngstrangeloop-slides</p>
+    </section>
+
+    <section>
+    <h1>Who are we?</h1>
     </section>
     <section>
         <img src="images/lukas.png" alt="Lukas">
@@ -101,10 +106,6 @@ MODULE BASIC ONE
 
         <p class="fragment fade-in">The AngularJS Elevator Pitch</p>
 
-        <!--
-        <p class="fragment fade-in">Hello AngularJS with Yeoman</p>
-        -->
-
         <p class="fragment fade-in">Hello AngularJS by Hand</p>
     </section>
 
@@ -115,7 +116,7 @@ MODULE BASIC ONE
 
         <p class="fragment fade-in">Publicly released as version 0.9.0 in October 2010</p>
 
-        <p class="fragment fade-in">Currently at version 1.0.7 stable or 1.2.0rc2 unstable</p>
+        <p class="fragment fade-in">Currently at version 1.0.8 stable or 1.2.0rc2 unstable</p>
     </section>
 
     <section>
@@ -133,29 +134,20 @@ MODULE BASIC ONE
 
         <p class="fragment fade-in">99 Problems but scope ain’t one of them!</p>
     </section>
-    <!--
+
     <section>
-        <h1>Yeoman</h1>
+        <h1>Basic (Demo) AngularJS Application</h1>
     </section>
 
     <section>
-        <h2>Hello AngularJS with Yeoman</h2>
-
-        <p class="fragment fade-in">npm install -g yo</p>
-
-        <p class="fragment fade-in">npm install -g generator-angular</p>
-
-        <p class="fragment fade-in">mkdir projectname && cd $_</p>
-
-        <p class="fragment fade-in">yo angular projectname</p>
-
-        <p class="fragment fade-in">grunt server</p>
-
-        <p class="fragment fade-in">grunt test</p>
-
-        <p class="fragment fade-in">grunt</p>
-    </section>
-    -->
+    <h2>Basic (Demo) AngularJS Application</h2>
+            <p class="fragment fade-in">git clone git@github.com:matsko/angularjs-strangeloop-democode.git<p>
+            <p class="fragment fade-in">cd angularjs-strangeloop-democode</p>
+            <p class="fragment fade-in">npm install</p>
+            <p class="fragment fade-in">grunt serve</p>
+            <p class="fragment fade-in">grunt test or grunt autotest</p>
+            <p class="fragment fade-in em">yom.nu/ngstrangeloop-demo</p>
+</section>
     <section>
         <h2>Hello AngularJS From Scratch</h2>
             <pre class="big-code fragment fade-in"><code data-trim>
@@ -443,6 +435,10 @@ MODULE BASIC FOUR
 
         <p class="fragment fade-in">Firebase</p>
     </section>
+          <section>
+            <img src="images/hammer.gif" alt="Demo Time!">
+            <h1>Stop! Demo Time!</h1>
+          </section>      
 </section>
 
 
@@ -475,7 +471,8 @@ MODULE BASIC FIVE
 
         <p class="fragment fade-in">Test isolated pieces or units of logic</p>
 
-        <p class="fragment fade-in">We accomplish this with matchers and spies</p>
+        <p class="fragment fade-in">We accomplish this with matchers, mocks and/or spies</p>
+
     </section>
     <section>
         <h2>Matchers</h2>
@@ -487,19 +484,35 @@ expect(a).toBe(b);
 expect(a).not.toBe(null);
             </code></pre>
     </section>
-    <section>
-        <h2>Spies</h2>
-
-        <p class="fragment fade-in">Jasmine’s test doubles are called spies. A spy can stub any function and tracks
-            calls to it and all arguments. There are special matchers for interacting with spies.</p>
-            <pre class="big-code fragment fade-in"><code data-trim>
-spyOn(mockUserService, 'userExists').andCallThrough();
-scope.userExists();
-expect(mockUserService.userExists).toHaveBeenCalled();
+  <section>
+            <h2>Mocks</h2>
+            <p class="fragment fade-in">Instead of relying on checking code from executing via Jasmine, let's use AngularJS to mock out specific areas of code to do the trick</p>
+             <pre class="big-code fragment fade-in"><code data-trim>
+app.factory('relativeUrlChanger', function($location) {
+  return function(path) {
+    $location.path('/relative' + path);
+  };
+});
             </code></pre>
+            <pre class="big-code fragment fade-in"><code data-trim>
+describe('my test', function() {
+  it('should changed the location properly', function() {
+    var newPath;
+    module(function($provide) {
+      $provide.value('$location', {
+        path : function(path) { newPath = path; }
+      });
+    });
+    inject(function(relativeUrlChanger) {
+      relativeUrlChanger('/home'); 
+      expect(newPath).toBe('/relative/home');
+    });
+  });
+});
+             </code></pre>
     </section>
-    <section>
-        <h2>E2E Testing</h2>
+  <section>
+      <h2>E2E Testing</h2>
 
         <p class="fragment fade-in">Used for simulating user interactions</p>
 
@@ -511,6 +524,10 @@ expect(mockUserService.userExists).toHaveBeenCalled();
 
         <p class="fragment fade-in">afterEach runs after each it block</p>
     </section>
+          <section>
+            <img src="images/hammer.gif" alt="Demo Time!">
+            <h1>Stop! Demo Time!</h1>
+          </section>                  
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
