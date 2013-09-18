@@ -458,7 +458,7 @@ MODULE BASIC FIVE
     <section>
         <h2>The Environment</h2>
 
-        <p class="fragment fade-in">Karma is the current scenario runner</p>
+        <p class="fragment fade-in">Karma is the current test runner</p>
 
         <p class="fragment fade-in">Protractor is the next-gen scenario runner</p>
 
@@ -594,6 +594,35 @@ MODULE ADVANCED ONE
         <p class="fragment fade-in">$digest and $apply</p>
 
         <p class="fragment fade-in">$rootScope</p>
+    </section>
+    <section>
+        <h2>$compile</h2>
+
+        <p class="fragment fade-in">$compile compiles DOM into a template function that can then be used to link scope<p>
+    </section>
+    <section>
+        <img src="images/compile.png" alt="Compile">
+    </section>
+    <section>
+        <h2>$digest and $apply</h2>
+
+        <p class="fragment fade-in">$digest processes all of the watchers of the current scope</p>
+
+        <p class="fragment fade-in">$apply() is used to notify that something has happened outside of the AngularJS domain</p>
+
+        <p class="fragment fade-in">$apply forces a $digest cycle</p>
+    </section>
+    <section>
+        <img src="images/digest.png" alt="Compile">
+    </section>
+    <section>
+        <h2>$rootScope</h2>
+
+        <p class="fragment fade-in">Every application has a single root scope aka $rootScope</p>
+
+        <p class="fragment fade-in">All other scopes are children of $rootScope</p>
+
+        <p class="fragment fade-in">Use $broadcast, $emit and $on to communicate between scopes</p>
     </section>
 </section>
 
